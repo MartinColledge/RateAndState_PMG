@@ -35,14 +35,13 @@ def RK2_secondstep(
         Theta_n05,  # The midway value of                                         Theta
         u_n,        # The initial value of                                               u
         u_n05,      # The midway value of                                                u
-        Phi_n,      # The initial value of                                                     Phi
         Phi_n05     # The estimated value of Phi at midway throught the time step
         ):
     
-    #Estimate u at n+1
-    u_n1        = u_n       +       Delta_t * g(Phi_n05)
-    
     # Estimate Theta at n+1
-    Theta_n1 = Theta_n + Delta_t * f(Theta_n05,u_n05,Phi_n05)
-        
+    Theta_n1 = Theta_n      + Delta_t * f(Theta_n05,u_n05,Phi_n05)
+    
+    #Estimate u at n+1
+    u_n1        = u_n       + Delta_t * g(Phi_n05)
+    
     return Theta_n1, u_n1
